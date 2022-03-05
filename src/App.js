@@ -1,12 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 import store from 'store/index';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
 import { Provider } from 'react-redux';
 import { Home } from 'pages';
 
 function App() {
+  let persistor = persistStore(store);
   return (
     <Provider store={store}>
+      {/* <PersistGate loading={<Home />} persistor={persistor}> */}
       <Home />
       <div className='App'>
         <header className='App-header'>
@@ -24,6 +28,7 @@ function App() {
           </a>
         </header>
       </div>
+      {/* </PersistGate> */}
     </Provider>
   );
 }
