@@ -12,11 +12,14 @@ import {
 } from 'redux-persist';
 import { counterReducer } from 'store/features/counter';
 import { effectsReducer } from 'store/features/effects';
+import { userReducer } from 'store/features/user';
 import mySaga from './features/effects/saga';
+import { rootSaga } from 'store/sagas';
 
 const reducers = combineReducers({
   counter: counterReducer,
   effects: effectsReducer,
+  user: userReducer,
 });
 
 const persistConfig = {
@@ -49,4 +52,5 @@ export default configureStore({
   },
 });
 
-sagaMiddleware.run(mySaga);
+// sagaMiddleware.run(mySaga);
+sagaMiddleware.run(rootSaga);
